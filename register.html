@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register - LifeAssist</title>
+</head>
+<body>
+
+<h2>Register Page</h2>
+
+<form method="POST">
+
+    <label>Username</label><br>
+    <input type="text" name="username" id="regUsername" required>
+    <button type="button" onclick="startVoiceInput('regUsername')">🎤</button>
+    <br><br>
+
+    <label>Password</label><br>
+    <input type="password" name="password" id="regPassword" required>
+    <button type="button" onclick="startVoiceInput('regPassword')">🎤</button>
+    <br><br>
+
+    <button type="submit">Register</button>
+</form>
+
+<br>
+<a href="/login">Already have account? Login</a>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>

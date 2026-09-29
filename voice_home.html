@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LifeAssist Voice Mode</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h1>LifeAssist</h1>
+    <p>Your Accessible Smart Assistant</p>
+
+    <button onclick="startVoice()">🎤 Start Voice Assistant</button>
+    <button onclick="goLogin()">Normal Login</button>
+    <button onclick="goRegister()">Register</button>
+
+    <p id="status"></p>
+</div>
+
+<script>
+function goLogin() {
+    window.location.href = "/login";
+}
+
+function goRegister() {
+    window.location.href = "/register";
+}
+
+function startVoice() {
+    const status = document.getElementById("status");
+
+    // Chrome check
+    if (!('webkitSpeechRecognition' in window)) {
+        status.innerText = "Voice recognition works only in Google Chrome.";
+        alert("Please open this page in Google Chrome.");
+        return;
+    }
+
+    const recognition = new webkitSpeechRecognition();
+    recognition.lang = "en-US";
+    recognition.continuous = false;
+    recognition.interimResults = false;
+
+    status.innerText = "Listening... Say 'login' or 'register'.";
+    recognition.start();
+
+    recognition.onresult = function(event) {
+        const command = event.results[0][0].transcript.toLowerCase();
+        status.innerText = "You said: " + command;
+
+        if (command.includes("login")) {
+            window.location.href = "/login";
+        } 
+        else if (command.includes("register")) {
+            window.location.href = "/register";
+        } 
+        else {
+            status.innerText = "Please say login or register clearly.";
+        }
+    };
+
+    recognition.onerror = function(event) {
+        status.innerText = "Voice Error: " + event.error;
+    };
+
+    recognition.onend = function() {
+        console.log("Voice recognition ended.");
+    };
+}
+</script>
+
+</body>
+</html>

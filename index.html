@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LifeAssist</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>LifeAssist</h1>
+
+    <div class="top-controls">
+    <button onclick="toggleContrast()">Toggle Contrast</button>
+    <button onclick="increaseFont()">A+</button>
+    <button onclick="decreaseFont()">A-</button>
+</div>
+<div class="card">
+    <h2>Add Reminder</h2>
+    <input type="text" id="reminderTitle" placeholder="Reminder Title">
+    <input type="time" id="reminderTime">
+    <button onclick="addReminder()">Add</button>
+</div>
+
+<div class="card">
+    <h2>AI Assistant</h2>
+    <input type="text" id="aiQuestion" placeholder="Ask something...">
+    <button onclick="askAI()">Ask</button>
+    <p id="aiResponse"></p>
+</div>
+
+    <div class="card">
+        <h2>Text to Speech</h2>
+        <input type="text" id="ttsText" placeholder="Enter text">
+        <button onclick="speakText()">Speak</button>
+    </div>
+
+    <div class="card">
+        <h2>Speech to Text</h2>
+        <button onclick="listenSpeech()">Start Listening</button>
+        <p id="result"></p>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>

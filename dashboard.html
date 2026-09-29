@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LifeAssist Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Welcome to LifeAssist Dashboard</h1>
+    <p>Your smart accessibility assistant</p>
+
+    <hr>
+
+    <!-- Accessibility Controls -->
+    <button onclick="toggleContrast()">Toggle Contrast</button>
+    <button onclick="increaseFont()">Increase Font</button>
+    <button onclick="decreaseFont()">Decrease Font</button>
+
+    <hr>
+
+    <!-- Reminder Section -->
+    <h2>Set a Reminder</h2>
+
+    <label for="reminderTitle">Reminder Title:</label><br>
+    <input type="text" id="reminderTitle" placeholder="Enter reminder"><br><br>
+
+    <label for="reminderTime">Time:</label><br>
+    <input type="time" id="reminderTime"><br><br>
+
+    <button onclick="addReminder()">Add Reminder</button>
+
+    <hr>
+
+    <!-- AI Assistant Section -->
+   <h2>Ask LifeAssist</h2>
+
+<input type="text" id="aiQuestion" placeholder="Type or use voice">
+<button type="button" onclick="startVoiceInput('aiQuestion')">🎤</button>
+<button onclick="askAI()">Ask</button>
+
+<p id="aiResponse"></p>
+
+
+    <hr>
+
+    <a href="/logout">Logout</a>
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>

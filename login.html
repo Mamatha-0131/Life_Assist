@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login - LifeAssist</title>
+</head>
+<body>
+
+<h2>Login Page</h2>
+
+<button type="button" onclick="enableVoiceLogin()">🎤 Full Voice Login</button>
+
+<br><br>
+
+<form method="POST" id="loginForm">
+
+    <label>Username</label><br>
+    <input type="text" name="username" id="username" required>
+    <button type="button" onclick="startVoiceInput('username')">🎤</button>
+    <br><br>
+
+    <label>Password</label><br>
+    <input type="password" name="password" id="password" required>
+    <button type="button" onclick="startVoiceInput('password')">🎤</button>
+    <br><br>
+
+    <button type="submit">Login</button>
+</form>
+
+<br>
+<a href="/register">Register Here</a>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
